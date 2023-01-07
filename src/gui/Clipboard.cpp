@@ -51,6 +51,11 @@ void Clipboard::setText(const QString& text, bool clear)
         return;
     }
 
+    if (text.isEmpty()) {
+        clipboard->clear();
+        return;
+    }
+
     auto* mime = new QMimeData;
 #ifdef Q_OS_MACOS
     mime->setText(text);
